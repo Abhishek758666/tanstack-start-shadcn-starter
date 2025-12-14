@@ -11,11 +11,11 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as FormIndexRouteImport } from './routes/form/index'
-import { Route as DataTableIndexRouteImport } from './routes/data-table/index'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard/index'
 import { Route as DashboardSettingsRouteImport } from './routes/dashboard/settings'
+import { Route as DashboardFormRouteImport } from './routes/dashboard/form'
 import { Route as DashboardFaqsRouteImport } from './routes/dashboard/faqs'
+import { Route as DashboardDataTableRouteImport } from './routes/dashboard/data-table'
 import { Route as AuthSignUpRouteImport } from './routes/_auth/sign-up'
 import { Route as AuthSignInRouteImport } from './routes/_auth/sign-in'
 import { Route as AuthForgotPasswordRouteImport } from './routes/_auth/forgot-password'
@@ -30,16 +30,6 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const FormIndexRoute = FormIndexRouteImport.update({
-  id: '/form/',
-  path: '/form/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DataTableIndexRoute = DataTableIndexRouteImport.update({
-  id: '/data-table/',
-  path: '/data-table/',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const DashboardIndexRoute = DashboardIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -50,9 +40,19 @@ const DashboardSettingsRoute = DashboardSettingsRouteImport.update({
   path: '/settings',
   getParentRoute: () => DashboardRoute,
 } as any)
+const DashboardFormRoute = DashboardFormRouteImport.update({
+  id: '/form',
+  path: '/form',
+  getParentRoute: () => DashboardRoute,
+} as any)
 const DashboardFaqsRoute = DashboardFaqsRouteImport.update({
   id: '/faqs',
   path: '/faqs',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardDataTableRoute = DashboardDataTableRouteImport.update({
+  id: '/data-table',
+  path: '/data-table',
   getParentRoute: () => DashboardRoute,
 } as any)
 const AuthSignUpRoute = AuthSignUpRouteImport.update({
@@ -77,22 +77,22 @@ export interface FileRoutesByFullPath {
   '/forgot-password': typeof AuthForgotPasswordRoute
   '/sign-in': typeof AuthSignInRoute
   '/sign-up': typeof AuthSignUpRoute
+  '/dashboard/data-table': typeof DashboardDataTableRoute
   '/dashboard/faqs': typeof DashboardFaqsRoute
+  '/dashboard/form': typeof DashboardFormRoute
   '/dashboard/settings': typeof DashboardSettingsRoute
   '/dashboard/': typeof DashboardIndexRoute
-  '/data-table': typeof DataTableIndexRoute
-  '/form': typeof FormIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/forgot-password': typeof AuthForgotPasswordRoute
   '/sign-in': typeof AuthSignInRoute
   '/sign-up': typeof AuthSignUpRoute
+  '/dashboard/data-table': typeof DashboardDataTableRoute
   '/dashboard/faqs': typeof DashboardFaqsRoute
+  '/dashboard/form': typeof DashboardFormRoute
   '/dashboard/settings': typeof DashboardSettingsRoute
   '/dashboard': typeof DashboardIndexRoute
-  '/data-table': typeof DataTableIndexRoute
-  '/form': typeof FormIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -101,11 +101,11 @@ export interface FileRoutesById {
   '/_auth/forgot-password': typeof AuthForgotPasswordRoute
   '/_auth/sign-in': typeof AuthSignInRoute
   '/_auth/sign-up': typeof AuthSignUpRoute
+  '/dashboard/data-table': typeof DashboardDataTableRoute
   '/dashboard/faqs': typeof DashboardFaqsRoute
+  '/dashboard/form': typeof DashboardFormRoute
   '/dashboard/settings': typeof DashboardSettingsRoute
   '/dashboard/': typeof DashboardIndexRoute
-  '/data-table/': typeof DataTableIndexRoute
-  '/form/': typeof FormIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -115,22 +115,22 @@ export interface FileRouteTypes {
     | '/forgot-password'
     | '/sign-in'
     | '/sign-up'
+    | '/dashboard/data-table'
     | '/dashboard/faqs'
+    | '/dashboard/form'
     | '/dashboard/settings'
     | '/dashboard/'
-    | '/data-table'
-    | '/form'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/forgot-password'
     | '/sign-in'
     | '/sign-up'
+    | '/dashboard/data-table'
     | '/dashboard/faqs'
+    | '/dashboard/form'
     | '/dashboard/settings'
     | '/dashboard'
-    | '/data-table'
-    | '/form'
   id:
     | '__root__'
     | '/'
@@ -138,11 +138,11 @@ export interface FileRouteTypes {
     | '/_auth/forgot-password'
     | '/_auth/sign-in'
     | '/_auth/sign-up'
+    | '/dashboard/data-table'
     | '/dashboard/faqs'
+    | '/dashboard/form'
     | '/dashboard/settings'
     | '/dashboard/'
-    | '/data-table/'
-    | '/form/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -151,8 +151,6 @@ export interface RootRouteChildren {
   AuthForgotPasswordRoute: typeof AuthForgotPasswordRoute
   AuthSignInRoute: typeof AuthSignInRoute
   AuthSignUpRoute: typeof AuthSignUpRoute
-  DataTableIndexRoute: typeof DataTableIndexRoute
-  FormIndexRoute: typeof FormIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -171,20 +169,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/form/': {
-      id: '/form/'
-      path: '/form'
-      fullPath: '/form'
-      preLoaderRoute: typeof FormIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/data-table/': {
-      id: '/data-table/'
-      path: '/data-table'
-      fullPath: '/data-table'
-      preLoaderRoute: typeof DataTableIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/dashboard/': {
       id: '/dashboard/'
       path: '/'
@@ -199,11 +183,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardSettingsRouteImport
       parentRoute: typeof DashboardRoute
     }
+    '/dashboard/form': {
+      id: '/dashboard/form'
+      path: '/form'
+      fullPath: '/dashboard/form'
+      preLoaderRoute: typeof DashboardFormRouteImport
+      parentRoute: typeof DashboardRoute
+    }
     '/dashboard/faqs': {
       id: '/dashboard/faqs'
       path: '/faqs'
       fullPath: '/dashboard/faqs'
       preLoaderRoute: typeof DashboardFaqsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/data-table': {
+      id: '/dashboard/data-table'
+      path: '/data-table'
+      fullPath: '/dashboard/data-table'
+      preLoaderRoute: typeof DashboardDataTableRouteImport
       parentRoute: typeof DashboardRoute
     }
     '/_auth/sign-up': {
@@ -231,13 +229,17 @@ declare module '@tanstack/react-router' {
 }
 
 interface DashboardRouteChildren {
+  DashboardDataTableRoute: typeof DashboardDataTableRoute
   DashboardFaqsRoute: typeof DashboardFaqsRoute
+  DashboardFormRoute: typeof DashboardFormRoute
   DashboardSettingsRoute: typeof DashboardSettingsRoute
   DashboardIndexRoute: typeof DashboardIndexRoute
 }
 
 const DashboardRouteChildren: DashboardRouteChildren = {
+  DashboardDataTableRoute: DashboardDataTableRoute,
   DashboardFaqsRoute: DashboardFaqsRoute,
+  DashboardFormRoute: DashboardFormRoute,
   DashboardSettingsRoute: DashboardSettingsRoute,
   DashboardIndexRoute: DashboardIndexRoute,
 }
@@ -252,8 +254,6 @@ const rootRouteChildren: RootRouteChildren = {
   AuthForgotPasswordRoute: AuthForgotPasswordRoute,
   AuthSignInRoute: AuthSignInRoute,
   AuthSignUpRoute: AuthSignUpRoute,
-  DataTableIndexRoute: DataTableIndexRoute,
-  FormIndexRoute: FormIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
