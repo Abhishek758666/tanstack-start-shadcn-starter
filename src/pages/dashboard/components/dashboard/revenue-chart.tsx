@@ -31,11 +31,11 @@ const chartData = [
 const chartConfig = {
   revenue: {
     label: "Revenue",
-    color: "hsl(var(--chart-1))",
+    color: "hsl(var(--primary))",
   },
   orders: {
     label: "Orders",
-    color: "hsl(var(--chart-2))",
+    color: "hsl(var(--primary))",
   },
 } satisfies ChartConfig;
 
@@ -98,7 +98,7 @@ export function RevenueChart() {
             <ChartTooltip
               content={<ChartTooltipContent />}
               cursor={{
-                stroke: "hsl(var(--muted-foreground))",
+                stroke: "hsl(var(--primary))",
                 strokeWidth: 1,
               }}
             />

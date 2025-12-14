@@ -45,30 +45,6 @@ const activities = [
     time: "1 hour ago",
     status: "success",
   },
-  {
-    id: 4,
-    user: {
-      name: "Alex Thompson",
-      avatar: "",
-      initials: "AT",
-    },
-    action: "added new customer",
-    target: "Acme Corp",
-    time: "2 hours ago",
-    status: "new",
-  },
-  {
-    id: 5,
-    user: {
-      name: "Jennifer Lee",
-      avatar: "",
-      initials: "JL",
-    },
-    action: "shipped order",
-    target: "#ORD-7819",
-    time: "3 hours ago",
-    status: "success",
-  },
 ];
 
 const statusColors = {

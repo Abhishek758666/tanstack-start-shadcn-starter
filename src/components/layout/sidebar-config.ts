@@ -7,7 +7,6 @@ import {
 	Table,
 	User2,
 	UserCheck,
-	UserCheck2,
 } from "lucide-react";
 
 export const data = {

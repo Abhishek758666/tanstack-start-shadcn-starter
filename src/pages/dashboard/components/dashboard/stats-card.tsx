@@ -20,8 +20,8 @@ export function StatsCard({
   description,
 }: StatsCardProps) {
   return (
-    <Card className="relative overflow-hidden transition-all hover:shadow-lg hover:scale-[1.02] group">
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+    <Card className="relative overflow-hidden group">
+      <div className="absolute inset-0 bg-linear-to-br from-primary/5 via-transparent to-transparent opacity-100 transition-opacity" />
       <CardContent className="p-6">
         <div className="flex items-center justify-between">
           <div className="space-y-1">

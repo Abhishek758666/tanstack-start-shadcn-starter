@@ -1,16 +1,7 @@
+import { DollarSign, ShoppingCart, TrendingUp, Users } from "lucide-react";
 import {
-  ArrowDownToLine,
-  DollarSign,
-  ShoppingCart,
-  TrendingUp,
-  Users,
-} from "lucide-react";
-import {
-  CategoryChart,
-  GoalsProgress,
   RecentActivity,
   RevenueChart,
-  SalesChart,
   StatsCard,
 } from "./components/dashboard";
 
@@ -57,42 +48,10 @@ const DashboardPage = () => {
         />
       </div>
 
-      {/* Goals Progress */}
-      <GoalsProgress />
-
       {/* Charts Row */}
       <div className="grid gap-6 lg:grid-cols-3">
         <RevenueChart />
         <RecentActivity />
-      </div>
-
-      {/* Bottom Charts Row */}
-      <div className="grid gap-6 md:grid-cols-2">
-        <SalesChart />
-        <CategoryChart />
-      </div>
-
-      {/* Quick Actions Footer */}
-      <div className="rounded-lg border bg-card p-4">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex items-center gap-3">
-            <div className="rounded-lg bg-primary/10 p-2">
-              <ArrowDownToLine className="h-5 w-5 text-primary" />
-            </div>
-            <div>
-              <p className="font-medium">Download your monthly report</p>
-              <p className="text-sm text-muted-foreground">
-                Get a comprehensive breakdown of this month's performance
-              </p>
-            </div>
-          </div>
-          <button
-            type="button"
-            className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Download Report
-          </button>
-        </div>
       </div>
     </div>
   );
