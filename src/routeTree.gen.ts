@@ -11,6 +11,8 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as FormIndexRouteImport } from './routes/form/index'
+import { Route as DataTableIndexRouteImport } from './routes/data-table/index'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard/index'
 import { Route as DashboardSettingsRouteImport } from './routes/dashboard/settings'
 import { Route as DashboardFaqsRouteImport } from './routes/dashboard/faqs'
@@ -26,6 +28,16 @@ const DashboardRoute = DashboardRouteImport.update({
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FormIndexRoute = FormIndexRouteImport.update({
+  id: '/form/',
+  path: '/form/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DataTableIndexRoute = DataTableIndexRouteImport.update({
+  id: '/data-table/',
+  path: '/data-table/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardIndexRoute = DashboardIndexRouteImport.update({
@@ -68,6 +80,8 @@ export interface FileRoutesByFullPath {
   '/dashboard/faqs': typeof DashboardFaqsRoute
   '/dashboard/settings': typeof DashboardSettingsRoute
   '/dashboard/': typeof DashboardIndexRoute
+  '/data-table': typeof DataTableIndexRoute
+  '/form': typeof FormIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -77,6 +91,8 @@ export interface FileRoutesByTo {
   '/dashboard/faqs': typeof DashboardFaqsRoute
   '/dashboard/settings': typeof DashboardSettingsRoute
   '/dashboard': typeof DashboardIndexRoute
+  '/data-table': typeof DataTableIndexRoute
+  '/form': typeof FormIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -88,6 +104,8 @@ export interface FileRoutesById {
   '/dashboard/faqs': typeof DashboardFaqsRoute
   '/dashboard/settings': typeof DashboardSettingsRoute
   '/dashboard/': typeof DashboardIndexRoute
+  '/data-table/': typeof DataTableIndexRoute
+  '/form/': typeof FormIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -100,6 +118,8 @@ export interface FileRouteTypes {
     | '/dashboard/faqs'
     | '/dashboard/settings'
     | '/dashboard/'
+    | '/data-table'
+    | '/form'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -109,6 +129,8 @@ export interface FileRouteTypes {
     | '/dashboard/faqs'
     | '/dashboard/settings'
     | '/dashboard'
+    | '/data-table'
+    | '/form'
   id:
     | '__root__'
     | '/'
@@ -119,6 +141,8 @@ export interface FileRouteTypes {
     | '/dashboard/faqs'
     | '/dashboard/settings'
     | '/dashboard/'
+    | '/data-table/'
+    | '/form/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -127,6 +151,8 @@ export interface RootRouteChildren {
   AuthForgotPasswordRoute: typeof AuthForgotPasswordRoute
   AuthSignInRoute: typeof AuthSignInRoute
   AuthSignUpRoute: typeof AuthSignUpRoute
+  DataTableIndexRoute: typeof DataTableIndexRoute
+  FormIndexRoute: typeof FormIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -143,6 +169,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/form/': {
+      id: '/form/'
+      path: '/form'
+      fullPath: '/form'
+      preLoaderRoute: typeof FormIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/data-table/': {
+      id: '/data-table/'
+      path: '/data-table'
+      fullPath: '/data-table'
+      preLoaderRoute: typeof DataTableIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dashboard/': {
@@ -212,6 +252,8 @@ const rootRouteChildren: RootRouteChildren = {
   AuthForgotPasswordRoute: AuthForgotPasswordRoute,
   AuthSignInRoute: AuthSignInRoute,
   AuthSignUpRoute: AuthSignUpRoute,
+  DataTableIndexRoute: DataTableIndexRoute,
+  FormIndexRoute: FormIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

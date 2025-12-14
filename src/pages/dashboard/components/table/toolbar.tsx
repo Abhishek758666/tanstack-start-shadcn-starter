@@ -1,3 +1,6 @@
+import type { Table } from "@tanstack/react-table";
+import { ChevronDown, Columns2, Plus, Search, X } from "lucide-react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -13,17 +16,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { DashboardOrder } from "@/interface/dashboard";
+import type { DataTableOrder } from "@/interface/dashboard";
 import { cn } from "@/lib/utils";
-import { Table } from "@tanstack/react-table";
-import { ChevronDown, Columns2, Plus, Search, X } from "lucide-react";
-import { useState } from "react";
 
-interface DashboardToolbarProps {
-  table: Table<DashboardOrder>;
+interface DataTableToolbarProps {
+  table: Table<DataTableOrder>;
 }
 
-const DashboardToolbar = ({ table }: DashboardToolbarProps) => {
+const DataTableToolbar = ({ table }: DataTableToolbarProps) => {
   const [searchValue, setSearchValue] = useState("");
   const statusColumn = table.getColumn("status");
   const paymentMethodColumn = table.getColumn("paymentMethod");
@@ -167,4 +167,4 @@ const DashboardToolbar = ({ table }: DashboardToolbarProps) => {
   );
 };
 
-export default DashboardToolbar;
+export default DataTableToolbar;

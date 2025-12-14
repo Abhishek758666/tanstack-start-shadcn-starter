@@ -1,4 +1,4 @@
-export interface DashboardOrder {
+export interface DataTableOrder {
 	id: string;
 	customerName: string;
 	email: string;

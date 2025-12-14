@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { TableCell, TableRow } from "@/components/ui/table";
 
-import type { DashboardOrder } from "@/interface/dashboard";
+import type { DataTableOrder } from "@/interface/dashboard";
 
 const DragHandle = ({ id }: { id: string }) => {
   const { attributes, listeners } = useSortable({
@@ -43,7 +43,7 @@ const Actions = () => {
   );
 };
 
-export const DraggableRow = ({ row }: { row: Row<DashboardOrder> }) => {
+export const DraggableRow = ({ row }: { row: Row<DataTableOrder> }) => {
   const { transform, transition, setNodeRef, isDragging } = useSortable({
     id: row.original.id,
   });
@@ -68,7 +68,7 @@ export const DraggableRow = ({ row }: { row: Row<DashboardOrder> }) => {
   );
 };
 
-export const DashboardColumns: ColumnDef<DashboardOrder>[] = [
+export const DashboardColumns: ColumnDef<DataTableOrder>[] = [
   {
     id: "drag",
     header: () => <div className="w-8" />,
