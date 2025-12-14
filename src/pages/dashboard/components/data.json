@@ -1,0 +1,92 @@
+[
+	{
+		"id": "ORD-1001",
+		"customerName": "Aarav Sharma",
+		"email": "aarav.sharma@example.com",
+		"status": "Pending",
+		"amount": 245.75,
+		"paymentMethod": "Credit Card",
+		"createdAt": "2025-12-01T10:15:00Z"
+	},
+	{
+		"id": "ORD-1002",
+		"customerName": "Sita Koirala",
+		"email": "sita.koirala@example.com",
+		"status": "Completed",
+		"amount": 1299.99,
+		"paymentMethod": "Bank Transfer",
+		"createdAt": "2025-12-02T14:42:00Z"
+	},
+	{
+		"id": "ORD-1003",
+		"customerName": "Ramesh Thapa",
+		"email": "ramesh.thapa@example.com",
+		"status": "Cancelled",
+		"amount": 89.5,
+		"paymentMethod": "Cash",
+		"createdAt": "2025-12-03T09:20:00Z"
+	},
+	{
+		"id": "ORD-1004",
+		"customerName": "Nisha Pandey",
+		"email": "nisha.pandey@example.com",
+		"status": "Completed",
+		"amount": 560.0,
+		"paymentMethod": "Wallet",
+		"createdAt": "2025-12-04T16:10:00Z"
+	},
+	{
+		"id": "ORD-1005",
+		"customerName": "Bibek Adhikari",
+		"email": "bibek.adhikari@example.com",
+		"status": "Pending",
+		"amount": 310.25,
+		"paymentMethod": "Credit Card",
+		"createdAt": "2025-12-05T11:55:00Z"
+	},
+	{
+		"id": "ORD-1006",
+		"customerName": "Anita Gurung",
+		"email": "anita.gurung@example.com",
+		"status": "Refunded",
+		"amount": 720.4,
+		"paymentMethod": "Bank Transfer",
+		"createdAt": "2025-12-06T18:30:00Z"
+	},
+	{
+		"id": "ORD-1007",
+		"customerName": "Prakash Shrestha",
+		"email": "prakash.shrestha@example.com",
+		"status": "Completed",
+		"amount": 150.0,
+		"paymentMethod": "Cash",
+		"createdAt": "2025-12-07T08:05:00Z"
+	},
+	{
+		"id": "ORD-1008",
+		"customerName": "Kriti Joshi",
+		"email": "kriti.joshi@example.com",
+		"status": "Pending",
+		"amount": 980.9,
+		"paymentMethod": "Wallet",
+		"createdAt": "2025-12-08T13:48:00Z"
+	},
+	{
+		"id": "ORD-1009",
+		"customerName": "Suman Basnet",
+		"email": "suman.basnet@example.com",
+		"status": "Completed",
+		"amount": 410.0,
+		"paymentMethod": "Credit Card",
+		"createdAt": "2025-12-09T17:22:00Z"
+	},
+	{
+		"id": "ORD-1010",
+		"customerName": "Pooja Rai",
+		"email": "pooja.rai@example.com",
+		"status": "Pending",
+		"amount": 65.99,
+		"paymentMethod": "Wallet",
+		"createdAt": "2025-12-10T12:00:00Z"
+	}
+]
