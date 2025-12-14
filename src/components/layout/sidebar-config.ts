@@ -3,6 +3,7 @@ import {
 	HelpCircle,
 	LayoutDashboard,
 	LayoutTemplate,
+	Lock,
 	Table,
 	User2,
 	UserCheck,
@@ -63,7 +64,7 @@ export const data = {
 				{
 					title: "Forgot Password",
 					url: "/forgot-password",
-					icon: UserCheck2,
+					icon: Lock,
 				},
 				{
 					title: "FAQs",
