@@ -1,11 +1,12 @@
 import {
-	AlertTriangle,
 	FormInputIcon,
 	HelpCircle,
 	LayoutDashboard,
 	LayoutTemplate,
+	Lock,
 	Table,
 	User2,
+	UserCheck,
 } from "lucide-react";
 
 export const data = {
@@ -30,12 +31,12 @@ export const data = {
 			items: [
 				{
 					title: "Data table",
-					url: "/data-table",
+					url: "/dashboard/data-table",
 					icon: Table,
 				},
 				{
 					title: "Form",
-					url: "/form",
+					url: "/dashboard/form",
 					icon: FormInputIcon,
 				},
 			],
@@ -52,38 +53,21 @@ export const data = {
 				{
 					title: "Sign In",
 					url: "/sign-in",
+					icon: UserCheck,
+				},
+				{
+					title: "Sign Up",
+					url: "/sign-up",
 					icon: User2,
 				},
 				{
-					title: "Errors",
-					url: "#",
-					icon: AlertTriangle,
-					items: [
-						{
-							title: "Unauthorized",
-							url: "/errors/unauthorized",
-						},
-						{
-							title: "Forbidden",
-							url: "/errors/forbidden",
-						},
-						{
-							title: "Not Found",
-							url: "/errors/not-found",
-						},
-						{
-							title: "Internal Server Error",
-							url: "/errors/internal-server-error",
-						},
-						{
-							title: "Under Maintenance",
-							url: "/errors/under-maintenance",
-						},
-					],
+					title: "Forgot Password",
+					url: "/forgot-password",
+					icon: Lock,
 				},
 				{
 					title: "FAQs",
-					url: "/faqs",
+					url: "/dashboard/faqs",
 					icon: HelpCircle,
 				},
 			],

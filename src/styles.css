@@ -154,6 +154,7 @@
 /* Smooth scrolling for the entire page */
 html {
   scroll-behavior: smooth;
+  /* font-size: 1.1rem; */
 }
 
 /* Logo carousel animation */
