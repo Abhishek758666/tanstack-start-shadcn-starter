@@ -7,7 +7,7 @@ import {
   ThemeCustomizer,
   ThemeCustomizerTrigger,
 } from "@/components/layout/themes/theme-customizer";
-import { ThemeProvider } from "@/components/providers/theme-provider";
+import { ThemeProvider } from "@/components/providers/theme-provider.client";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { SidebarConfigProvider } from "@/contexts/sidebar-context";
 import { useSidebarConfig } from "@/hooks/use-sidebar-config";
@@ -18,10 +18,7 @@ export const Route = createFileRoute("/dashboard")({
 
 function DashboardBaseLayout() {
   return (
-    <ThemeProvider
-      defaultTheme="system"
-      storageKey="abhishek-tanstack-store-theme"
-    >
+    <ThemeProvider defaultTheme="system" storageKey="startkit-theme">
       <SidebarConfigProvider>
         <DashboardLayout />
       </SidebarConfigProvider>
