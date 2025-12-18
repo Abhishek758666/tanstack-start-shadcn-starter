@@ -27,53 +27,51 @@
 ## 📁 Folder Structure
 
 ```
-starter-2/
 ├── public/                    # Static assets
 ├── src/
 │   ├── components/
-│   │   ├── dataTable/         # DataTable component with pagination
-│   │   │   ├── index.tsx      # Main DataTable component
-│   │   │   └── pagination.tsx # Pagination controls
-│   │   ├── form/              # Form input components
-│   │   │   ├── email-input-field.tsx
-│   │   │   ├── password-input-field.tsx
-│   │   │   └── user-input-field.tsx
-│   │   ├── layout/            # Layout components
-│   │   │   ├── app-sidebar.tsx
-│   │   │   ├── nav-main.tsx
-│   │   │   ├── nav-secondary.tsx
-│   │   │   ├── sidebar-config.ts
-│   │   │   ├── site-header.tsx
-│   │   │   └── themes/        # Theme customization
-│   │   ├── providers/         # Context providers
-│   │   └── ui/                # Shadcn/ui components (31 components)
-│   ├── config/                # App configuration
-│   ├── contexts/              # React contexts
-│   ├── hooks/                 # Custom hooks
+│   │   ├── dataTable/
+│   │   │   └── index.tsx
+│   │   ├── form/
+│   │   ├── layout/
+│   │   ├── providers/
+│   │   └── ui/
+│   ├── config/
+│   ├── contexts/
+│   ├── hooks/
 │   │   ├── use-circular-transition.ts
 │   │   ├── use-mobile.ts
 │   │   ├── use-pagination.tsx
 │   │   ├── use-sidebar-config.ts
 │   │   ├── use-sidebar.ts
 │   │   ├── use-store.ts
-│   │   ├── use-theme-manager.ts
-│   │   └── use-theme.ts
-│   ├── integrations/          # Third-party integrations
-│   ├── interface/             # TypeScript interfaces
-│   ├── lib/                   # Utility functions
-│   ├── pages/                 # Page components
-│   │   ├── auth/              # Authentication pages
-│   │   │   ├── sign-in-page.tsx
-│   │   │   ├── sign-up-page.tsx
-│   │   │   └── forgot-password-page.tsx
-│   │   ├── dashboard/         # Dashboard pages
-│   │   └── landing/           # Landing page
+│   │   └── use-theme-manager.ts
+│   ├── integrations/
+│   ├── interface/
+│   ├── lib/
+│   ├── pages/
+│   │   ├── auth/
+│   │   ├── dashboard/
+│   │   └── landing/
 │   ├── routes/                # TanStack Router routes
-│   ├── schemas/               # Zod validation schemas
-│   ├── types/                 # TypeScript types
-│   └── utils/                 # Utility functions
-├── biome.json                 # Biome linter config
-├── components.json            # Shadcn/ui config
+│   │   ├── _auth/
+│   │   │   ├── forgot-password.tsx
+│   │   │   ├── sign-in.tsx
+│   │   │   └── sign-up.tsx
+│   │   ├── dashboard/
+│   │   │   ├── data-table.tsx
+│   │   │   ├── faqs.tsx
+│   │   │   ├── form.tsx
+│   │   │   ├── index.tsx
+│   │   │   ├── route.tsx
+│   │   │   └── settings.tsx
+│   │   ├── __root.tsx
+│   │   └── index.tsx
+│   ├── schemas/
+│   ├── types/
+│   └── utils/
+├── biome.json
+├── components.json
 ├── package.json
 ├── tsconfig.json
 └── vite.config.ts
@@ -109,20 +107,29 @@ pnpm check
 | Component | Description |
 |-----------|-------------|
 | `Accordion` | Expandable content sections |
+| `Animated Theme Toggler` | Theme toggle with animation |
 | `Avatar` | User avatars with fallback |
 | `Badge` | Status and label badges |
 | `Breadcrumb` | Navigation breadcrumbs |
 | `Button` | Multi-variant button component |
 | `Card` | Content container with header/footer |
+| `Chart` | Recharts wrapper for data visualization |
 | `Checkbox` | Form checkbox input |
 | `Collapsible` | Toggle visibility of content |
+| `Color Picker` | Color selection component |
 | `Dialog` | Modal dialog component |
 | `Drawer` | Slide-out panel |
 | `Dropdown Menu` | Context menus and dropdowns |
 | `Form` | Form wrapper with validation |
+| `Glow` | Glow effect component |
 | `Input` | Text input with variants |
 | `Input Group` | Input with addons (icons, buttons) |
+| `Item` | Generic item component |
 | `Label` | Form field labels |
+| `Logo` | Application logo component |
+| `Navbar` | Navigation bar component |
+| `Navigation Menu` | Navigation menu component |
+| `Pricing Column` | Pricing table column |
 | `Select` | Dropdown select component |
 | `Separator` | Horizontal/vertical dividers |
 | `Sheet` | Side panel overlay |
@@ -137,7 +144,6 @@ pnpm check
 | `Toggle` | Toggle button |
 | `Toggle Group` | Group of toggle buttons |
 | `Tooltip` | Hover tooltips |
-| `Chart` | Recharts wrapper for data visualization |
 
 ### Form Components (`src/components/form/`)
 
@@ -271,6 +277,7 @@ export const DraggableRow = ({ row }: { row: Row<Order> }) => {
       ref={setNodeRef}
       style={{
         transform: CSS.Transform.toString(transform),
+        transition,
         transition,
       }}
     >
@@ -419,7 +426,6 @@ The app includes a built-in theme customizer accessible from the dashboard:
 | `useSidebar()` | Sidebar state and controls |
 | `useSidebarConfig()` | Sidebar configuration |
 | `useStore()` | Zustand store access |
-| `useTheme()` | Current theme access |
 | `useThemeManager()` | Theme management utilities |
 | `useCircularTransition()` | Circular animation for theme toggle |
 
