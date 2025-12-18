@@ -127,11 +127,15 @@ const DataTableToolbar = ({ table }: DataTableToolbarProps) => {
       <div className="flex items-center gap-2">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="outline" size="sm" className="cursor-pointer">
-              <Columns2 />
+            <Button
+              variant="outline"
+              size="sm"
+              className="cursor-pointer space-x-2"
+            >
+              <Columns2 className="h-4 w-4" />
               <span className="hidden lg:inline">Customize Columns</span>
               <span className="lg:hidden">Columns</span>
-              <ChevronDown />
+              <ChevronDown className="h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-56">
@@ -158,8 +162,12 @@ const DataTableToolbar = ({ table }: DataTableToolbarProps) => {
               })}
           </DropdownMenuContent>
         </DropdownMenu>
-        <Button variant="outline" size="sm" className="cursor-pointer">
-          <Plus />
+        <Button
+          variant="outline"
+          size="sm"
+          className="cursor-pointer space-x-2"
+        >
+          <Plus className="h-4 w-4" />
           <span className="hidden lg:inline">Add New Order</span>
         </Button>
       </div>
