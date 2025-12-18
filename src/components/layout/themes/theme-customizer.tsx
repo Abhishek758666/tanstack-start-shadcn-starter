@@ -9,7 +9,6 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { tweakcnThemes } from "@/config/theme-data";
 import { useSidebarConfig } from "@/contexts/sidebar-context";
 import { useThemeManager } from "@/hooks/use-theme-manager";
 import { cn } from "@/lib/utils";
@@ -31,14 +30,12 @@ export function ThemeCustomizer({ open, onOpenChange }: ThemeCustomizerProps) {
     applyRadius,
     setBrandColorsValues,
     applyTheme,
-    applyTweakcnTheme,
   } = useThemeManager();
   const { config: sidebarConfig, updateConfig: updateSidebarConfig } =
     useSidebarConfig();
 
   const [activeTab, setActiveTab] = React.useState("theme");
   const [selectedTheme, setSelectedTheme] = React.useState("default");
-  const [selectedTweakcnTheme, setSelectedTweakcnTheme] = React.useState("");
   const [selectedRadius, setSelectedRadius] = React.useState("0.5rem");
   const [importModalOpen, setImportModalOpen] = React.useState(false);
   const [importedTheme, setImportedTheme] =
@@ -49,7 +46,6 @@ export function ThemeCustomizer({ open, onOpenChange }: ThemeCustomizerProps) {
 
     // 1. Reset all state variables to initial values
     setSelectedTheme("default");
-    setSelectedTweakcnTheme("");
     setSelectedRadius("0.5rem");
     setImportedTheme(null); // Clear imported theme
     setBrandColorsValues({}); // Clear brand colors state
@@ -72,14 +68,9 @@ export function ThemeCustomizer({ open, onOpenChange }: ThemeCustomizerProps) {
     setImportedTheme(themeData);
     // Clear other selections to indicate custom import is active
     setSelectedTheme("");
-    setSelectedTweakcnTheme("");
 
     // Apply the imported theme
     applyImportedTheme(themeData, isDarkMode);
-  };
-
-  const handleImportClick = () => {
-    setImportModalOpen(true);
   };
 
   // Re-apply themes when theme mode changes
@@ -88,22 +79,13 @@ export function ThemeCustomizer({ open, onOpenChange }: ThemeCustomizerProps) {
       applyImportedTheme(importedTheme, isDarkMode);
     } else if (selectedTheme) {
       applyTheme(selectedTheme, isDarkMode);
-    } else if (selectedTweakcnTheme) {
-      const selectedPreset = tweakcnThemes.find(
-        (t) => t.value === selectedTweakcnTheme
-      )?.preset;
-      if (selectedPreset) {
-        applyTweakcnTheme(selectedPreset, isDarkMode);
-      }
     }
   }, [
     isDarkMode,
     importedTheme,
     selectedTheme,
-    selectedTweakcnTheme,
     applyImportedTheme,
     applyTheme,
-    applyTweakcnTheme,
   ]);
 
   return (
@@ -172,22 +154,15 @@ export function ThemeCustomizer({ open, onOpenChange }: ThemeCustomizerProps) {
                     <Layout className="h-4 w-4 mr-1" /> Layout
                   </TabsTrigger>
                 </TabsList>
-                {/* <TabsList className="grid w-full grid-cols-2 rounded-none h-12 p-1.5">
-                  <TabsTrigger value="theme" className="cursor-pointer data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"><Palette className="h-4 w-4 mr-1" /> Theme</TabsTrigger>
-                  <TabsTrigger value="layout" className="cursor-pointer data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"><Layout className="h-4 w-4 mr-1" /> Layout</TabsTrigger>
-                </TabsList> */}
               </div>
 
               <TabsContent value="theme" className="flex-1 mt-0">
                 <ThemeTab
                   selectedTheme={selectedTheme}
                   setSelectedTheme={setSelectedTheme}
-                  selectedTweakcnTheme={selectedTweakcnTheme}
-                  setSelectedTweakcnTheme={setSelectedTweakcnTheme}
                   selectedRadius={selectedRadius}
                   setSelectedRadius={setSelectedRadius}
                   setImportedTheme={setImportedTheme}
-                  onImportClick={handleImportClick}
                 />
               </TabsContent>
 

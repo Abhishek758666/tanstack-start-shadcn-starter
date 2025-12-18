@@ -1,4 +1,4 @@
-import { createFileRoute, Outlet } from "@tanstack/react-router";
+import { ClientOnly, createFileRoute, Outlet } from "@tanstack/react-router";
 import type React from "react";
 import { useState } from "react";
 import { AppSidebar } from "@/components/layout/app-sidebar";
@@ -7,7 +7,6 @@ import {
   ThemeCustomizer,
   ThemeCustomizerTrigger,
 } from "@/components/layout/themes/theme-customizer";
-import { ThemeProvider } from "@/components/providers/theme-provider.client";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { SidebarConfigProvider } from "@/contexts/sidebar-context";
 import { useSidebarConfig } from "@/hooks/use-sidebar-config";
@@ -18,11 +17,11 @@ export const Route = createFileRoute("/dashboard")({
 
 function DashboardBaseLayout() {
   return (
-    <ThemeProvider defaultTheme="system" storageKey="startkit-theme">
+    <ClientOnly>
       <SidebarConfigProvider>
         <DashboardLayout />
       </SidebarConfigProvider>
-    </ThemeProvider>
+    </ClientOnly>
   );
 }
 
