@@ -1,8 +1,8 @@
 import React from "react";
+import { useTheme } from "@/components/providers/theme-provider";
 import { baseColors } from "@/config/theme-customizer-constants";
 import { colorThemes } from "@/config/theme-data";
-import { useTheme } from "@/hooks/use-theme";
-import type { ImportedTheme, ThemePreset } from "@/types/theme-customizer";
+import type { ImportedTheme } from "@/types/theme-customizer";
 
 export function useThemeManager() {
 	const { theme, setTheme } = useTheme();
@@ -146,25 +146,6 @@ export function useThemeManager() {
 		[resetTheme, updateBrandColorsFromTheme],
 	);
 
-	const applyTweakcnTheme = React.useCallback(
-		(themePreset: ThemePreset, darkMode: boolean) => {
-			// Reset and apply theme variables
-			resetTheme();
-			const styles = darkMode
-				? themePreset.styles.dark
-				: themePreset.styles.light;
-			const root = document.documentElement;
-
-			Object.entries(styles).forEach(([key, value]) => {
-				root.style.setProperty(`--${key}`, value);
-			});
-
-			// Update brand colors values when theme changes
-			updateBrandColorsFromTheme(styles);
-		},
-		[resetTheme, updateBrandColorsFromTheme],
-	);
-
 	const applyImportedTheme = React.useCallback(
 		(themeData: ImportedTheme, darkMode: boolean) => {
 			const root = document.documentElement;
@@ -204,7 +185,6 @@ export function useThemeManager() {
 		setBrandColorsValues,
 		resetTheme,
 		applyTheme,
-		applyTweakcnTheme,
 		applyImportedTheme,
 		applyRadius,
 		handleColorChange,

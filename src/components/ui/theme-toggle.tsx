@@ -1,6 +1,6 @@
 import { MoonIcon, SunIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useTheme } from "../providers/theme-provider.client";
+import { useTheme } from "../providers/theme-provider";
 
 export function ModeToggle() {
   const { theme, setTheme } = useTheme();

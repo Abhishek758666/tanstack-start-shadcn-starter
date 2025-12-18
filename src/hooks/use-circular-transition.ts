@@ -1,5 +1,5 @@
 import { useCallback, useRef } from "react";
-import { useTheme } from "@/hooks/use-theme";
+import { useTheme } from "@/components/providers/theme-provider";
 
 interface CircularTransitionHook {
 	startTransition: (
